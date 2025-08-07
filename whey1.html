@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whey Beijinho</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
+  <style>
+   
+   body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #fff4ea;
+      color: #6b1e16;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: #fff4ea;
+      padding: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .icon-button {
+      background: #dd6645;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    
+    .product-image-container {
+      background-color: #8C3D2E; /* marrom da imagem */
+      border-radius: 1200px 1200px 0 0; /* arredondado só embaixo */
+      padding: 10px; /* espaço interno para a imagem */
+      width: 450px;
+      height: 200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-image {
+      width: 55%;
+      max-width: 300px;
+      margin: 0 auto;
+      border-radius: 16px;
+      display: block;
+      position: relative;
+      z-index: 2;
+      top: -40px
+    }
+    .product-info {
+      background: #ffe2b8;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+      padding: 1.5rem;
+      flex-grow: 1;
+      margin-top: -60px; /* sobe por cima da imagem */
+      border-radius: 30px 30px 0 0;
+      padding: 2rem;
+      position: relative;
+      z-index: 2; /* fica acima da imagem */
+    }
+    .product-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .product-description {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .price {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #a8432a;
+    }
+    .buy-button {
+      background: #dd6645;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .icon-button1{
+      font-size: 30px;
+      cursor: pointer;
+      background: #dd6645;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      width: 36px;
+    }
+
+    .acoes-produto {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #FFE1B3;
+      border-top: 1px solid #e0b98d;
+      flex-wrap: wrap;
+    }
+
+    .quantidade-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-menor,
+    .btn-maior {
+      background-color: #C2412D;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+
+    .quantidade {
+      font-size: 1.2rem;
+      color: #5C1F0E;
+      font-weight: bold;
+    }
+
+    .valor {
+      text-align: left;
+      color: #5C1F0E;
+      font-size: 0.9rem;
+    }
+
+    .preco-total {
+      font-size: 0.9rem;
+      color: #5C1F0E;
+      font-weight: normal;
+      margin-left: 12px;
+    }
+
+
+    .btn-comprar {
+      background-color: #C2412D;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      flex-grow: 1;
+      max-width: 160px;
+    }
+    @media (max-width: 480px) {
+      .product-info {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button class="icon-button1" onclick="history.back()">
+      <i class="bi bi-arrow-left-short"></i>
+    </button>
+
+    <h2>Whey Protein Beijinho</h2>
+    <a href="carrinho.html"><button class="icon-button"><i class="bi bi-cart-fill"></i></button></a>
+  </header>
+
+  <div class="product-image-container">
+    <img id="imagem-produto" class="product-image" src="whey1.png" alt="Whey Beijinho">
+  </div>
+
+  <div class="product-info">
+    <div id="nome-produto" class="product-title">Dose Whey Protein - Sabor Beijinho</div>
+    <div class="product-description">
+      Suplemento proteico ideal para quem busca praticidade e sabor. A versão "beijinho" do Whey traz um toque tropical e doce, mantendo alto valor biológico e rápida absorção, excelente para o pós-treino. Disponível em dose única.
+    </div>
+  
+     <div class="acoes-produto"> 
+      <div class="quantidade-container">
+        <button class="btn-menor" onclick="alterarQuantidade(-1)">−</button>
+        <span id="quantidade" class="quantidade">1</span>
+        <button class="btn-maior" onclick="alterarQuantidade(1)">+</button>
+        <span id="preco-total" class="preco-total">R$169,41</span>
+      </div>
+    <button class="btn-comprar" onclick="adicionarAoCarrinho()">Compre agora</button>
+</div>
+
+<script>
+  let quantidade = 1;
+  const precoUnitario = 169.41;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("preco-total").textContent = `R$ ${(quantidade * precoUnitario).toFixed(2).replace('.', ',')}`;
+  });
+
+  function alterarQuantidade(delta) {
+    quantidade += delta;
+    if (quantidade < 1) quantidade = 1;
+
+    document.getElementById('quantidade').textContent = quantidade;
+    document.getElementById('preco-total').textContent = `R$ ${(quantidade * precoUnitario).toFixed(2).replace('.', ',')}`;
+  }
+
+  function adicionarAoCarrinho() {
+    const nomeProduto = document.getElementById("nome-produto").textContent;
+    const imagemProduto = document.getElementById("imagem-produto").getAttribute("src");
+
+    const produto = {
+      id: Date.now(),
+      nome: nomeProduto,
+      quantidade: quantidade,
+      precoUnitario: precoUnitario,
+      total: quantidade * precoUnitario,
+      imagem: imagemProduto
+    };
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    const indiceExistente = carrinho.findIndex(item => item.nome === produto.nome);
+    if (indiceExistente !== -1) {
+      carrinho[indiceExistente].quantidade += produto.quantidade;
+      carrinho[indiceExistente].total += produto.total;
+    } else {
+      carrinho.push(produto);
+    }
+
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    // Exibe a mensagem temporária
+    const mensagem = document.getElementById("mensagem-carrinho");
+    mensagem.style.display = "block";
+    mensagem.textContent = "Produto adicionado ao carrinho!";
+
+    setTimeout(() => {
+      mensagem.style.display = "none";
+      window.location.href = "carrinho.html";
+    }, 1000);
+
+  }
+</script>
+
+
+  <div id="mensagem-carrinho" style="display:none; background:#dd6645; color:white; padding:10px; border-radius:10px; position:fixed; top:20px; left:50%; transform:translateX(-50%); z-index:999; font-weight:bold;">
+  Produto adicionado ao carrinho!
+  </div>
+
+</body>
+</html>
