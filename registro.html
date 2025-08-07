@@ -7,26 +7,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
 
-  <style>
-    body {
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-      background-color: #fceee0;
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+ <style>
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #fceee0;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
-    .container {
-      text-align: center;
-      width: 90%;
-      max-width: 400px;
-    }
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
 
-    .voltar {
+.voltar {
       position: fixed;
       top: 25px;
       right: 30px;
@@ -45,77 +45,79 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
       transition: background-color 0.3s;
     }
-
-    .voltar:hover {
+.voltar:hover {
       background: #872f1d;
     }
 
-    h2 {
-      font-size: 30px;
-      color: #a13a24;
-      margin-bottom: 20px;
-    }
+h2 {
+  font-size: 30px;
+  color: #a13a24;
+  margin-bottom: 30px;
+}
 
-    .input-group {
-      display: flex;
-      align-items: center;
-      border: 1.5px solid #7a3a2a;
-      border-radius: 8px;
-      padding: 12px;
-      background-color: #fceee0;
-      color: #a13a24;
-      width: 300px;
-      margin: 0 auto 15px;
-    }
+.reset-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
-    .input-group i {
-      margin-right: 10px;
-      color: #a13a24;
-    }
+.input-group {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #7a3a2a;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: #fceee0;
+  color: #a13a24;
+  width: 300px;
+  margin: 0 auto;
+}
 
-    .input-group input {
-      border: none;
-      outline: none;
-      background: transparent;
-      width: 100%;
-      font-size: 16px;
-      color: #a13a24;
-      font-weight: bold;
-    }
+.input-group i {
+  margin-right: 10px;
+  color: #a13a24;
+}
 
-    input::placeholder {
-      color: #B2422D;
-    }
+.input-group input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 16px;
+  color: #a13a24;
+  font-weight: bold;
+}
 
-    .reset-button {
-      background-color: #922312;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      width: 190px;
-      display: block;
-      margin: 20px auto; 
-    }
+input::placeholder {
+  color: #B2422D;
+}
 
-    .reset-button:hover {
-      background-color: #872f1d;
-    }
+.reset-button {
+  margin-top: 10px;
+  background-color: #922312;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 190px;
+  display: block;
+  margin: 20px auto; 
+  
+}
 
-    #mensagem {
-      font-weight: bold;
-      margin-top: 10px;
-    }
+.reset-button:hover {
+  background-color: #872f1d;
+}
 
-    @media (max-width: 400px){
-      .input-group{
-        max-width: 80%;
-      }
-    }
+@media (max-width: 400px){
+  .input-group{
+    max-width: 80%;
+  }
+}
   </style>
 </head>
 <body>
@@ -140,3 +142,4 @@
   <script type="module" src="reset.js"></script>
 </body>
 </html>
+
