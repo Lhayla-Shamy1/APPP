@@ -7,24 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
-    html, body {
-      height: 100%;
-      background-color: #fff4e9;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    html, body { height: 100%; background-color: #fff4e9; }
 
     .container {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       width: 100%;
-      padding-bottom: 70px; /* espaço pro footer fixo */
+      padding-bottom: 70px;
     }
 
     header {
@@ -88,10 +79,7 @@
       transition: background-color 0.3s ease;
     }
 
-    .editar-foto:hover {
-      background-color: #882f1b;
-    }
-
+    .editar-foto:hover { background-color: #882f1b; }
 
     .usuario h2 {
       color: #a5412a;
@@ -174,34 +162,33 @@
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 18px;
-      }
-      .usuario h2 {
-        font-size: 15px;
-      }
-      .usuario p {
-        font-size: 12px;
-      }
+      header h1 { font-size: 18px; }
+      .usuario h2 { font-size: 15px; }
+      .usuario p { font-size: 12px; }
+    }
+
+    input[type="file"] {
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-       <button class="voltar" onclick="history.back()">
-          <i class="bi bi-arrow-left"></i>
-        </button>
+      <button class="voltar" onclick="history.back()">
+        <i class="bi bi-arrow-left"></i>
+      </button>
       <h1>Perfil</h1>
     </header>
 
     <section class="usuario">
       <div class="avatar">
-        <img src="https://via.placeholder.com/90x90?text=Foto" alt="Foto do usuário">
-        <button class="editar-foto"><i class="bi bi-pencil"></i></button>
+        <img id="fotoUsuario" src="USUARIO.jpg" alt="Foto do usuário">
+        <label for="fotoInput" class="editar-foto"><i class="bi bi-pencil"></i></label>
+        <input type="file" id="fotoInput" accept="image/*">
       </div>
-      <h2>Graziela Costa Silva</h2>
-      <p>grazielacostasilva@gmail.com</p>
+      <h2 id="nomeUsuario">Carregando...</h2>
+      <p id="emailUsuario">---</p>
     </section>
 
     <section class="secao">
@@ -227,5 +214,49 @@
     </footer>
   </div>
 
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyAa3aKccdUFajT6zs9NSRIyRLYpDifsjgs",
+    authDomain: "titan-50e74.firebaseapp.com",
+    projectId: "titan-50e74",
+    storageBucket: "titan-50e74.firebaseapp.com",
+    messagingSenderId: "5930758953",
+    appId: "1:5930758953:web:15943cf5801240d9c47d38",
+    measurementId: "G-ZNJ8P95R71"
+};
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const nomeEl = document.getElementById('nomeUsuario');
+    const emailEl = document.getElementById('emailUsuario');
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        nomeEl.textContent = user.displayName || "Usuário sem nome";
+        emailEl.textContent = user.email || "";
+      } else {
+        nomeEl.textContent = "Não autenticado";
+        emailEl.textContent = "";
+      }
+    });
+
+    const inputFoto = document.getElementById("fotoInput");
+    const imgPreview = document.getElementById("fotoUsuario");
+
+    inputFoto.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          imgPreview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
 </body>
 </html>
